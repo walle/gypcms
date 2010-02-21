@@ -1,0 +1,19 @@
+firstPost:
+  title: Hello World!
+  preamble: |
+    This is a example page in the
+    gypcms framework.
+  body:
+    text: You can use
+    list1:
+      type: *
+      - lists
+      - that are
+      - unordered
+    list2:
+      type: #
+      - lists
+      - that are
+      - ordered
+    text: You can use
+    quote: blockquotes
