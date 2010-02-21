@@ -1,4 +1,6 @@
 firstPost:
+  publish: 2010-02-21 13:00:00
+  author: Fredrik Wallgren
   title: Hello World!
   preamble: |
     This is a example page in the
