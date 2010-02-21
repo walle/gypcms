@@ -1,4 +1,5 @@
 settings:
-  title: Gypcms example site
+  name: Gypcms example site
   logo: gfx/gypcms.png
   author: Fredrik Wallgren
+  language: en
