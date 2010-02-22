@@ -1,6 +1,8 @@
 firstPost:
   publish: 2010-02-21 13:00:00
   author: Fredrik Wallgren
+  filter: basic
+  page: article
   title: Hello World!
   preamble: |
     This is a example page in the
