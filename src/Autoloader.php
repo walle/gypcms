@@ -7,6 +7,8 @@ namespace gypcms;
 
 // TODO: Alot of work to clean this up
 
+// TODO: Rewrite so it parses the filessystem on demand instead of at the load?
+
 /**
  * Class that contains functionality to autoload the classes needed for the framework
  *
