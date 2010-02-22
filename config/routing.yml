@@ -1,0 +1,20 @@
+# Defines the data shown on the front page. In this case use the index page class and use the data in the data/index.yml file
+default:
+  url: /
+  page: index
+  data: index
+
+# Defines a search result page
+search:
+  url: /search
+  page: search
+  data: ~
+
+# Defines a list of all articles page sorted by publish date
+all:
+  url: /articles
+  page: list
+  sort:
+    data: publish
+    type: desc
+  data: ~
