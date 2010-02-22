@@ -18,3 +18,27 @@ all:
     data: publish
     type: desc
   data: ~
+
+# Defines a paginated list of the ten latest posts
+paged:
+  url: /latest
+  page: list
+  sort:
+    data: publish
+    type: desc
+  limit:
+    num: 10
+    type: page
+  data: ~
+
+# Defines a rss stream of the 25 latest posts
+rss:
+  url: /rss
+  page: rss
+  sort:
+    data: publish
+    type: desc
+  limit:
+    num: 25
+    type: ~
+  data: ~
