@@ -19,7 +19,7 @@ Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(dirname(__FILE__).'/../templates/'.$settingsArr['settings']['theme']);
 
 $twig = new Twig_Environment($loader, array(
-  'cache' => dirname(__FILE__).'/../cache/twigCache/',
+//  'cache' => dirname(__FILE__).'/../cache/twigCache/',
 ));
 
 $template = $twig->loadTemplate('article.html');
