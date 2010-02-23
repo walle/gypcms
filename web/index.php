@@ -12,6 +12,8 @@ require_once dirname(__FILE__).'/../src/Autoloader.php';
 $l = new gypcms\Autoloader();
 $l->load();
 
+$site = new gypcms\Site();
+
 $settingsArr = sfYaml::load(dirname(__FILE__).'/../config/settings.yml');
 
 $first = sfYaml::load(dirname(__FILE__).'/../data/'.str_replace('.html', '.yml', $_REQUEST['url']).'');
