@@ -1,0 +1,59 @@
+<VirtualHost *:80>
+        ServerName gypcms.dev
+        ServerAdmin webmaster@localhost
+        
+        DocumentRoot /home/walle/gitrepositories/gypcms/web/ 
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        
+        ExpiresActive On  
+        ExpiresDefault "access plus 300 seconds" 
+        <Directory /home/walle/gitrepositories/gypcms/web/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+                ExpiresByType text/html "access plus 1 month"  
+                ExpiresByType text/css "access plus 1 month"  
+                ExpiresByType application/javascript "access plus 1 month"
+                ExpiresByType text/javascript "access plus 1 month"  
+                ExpiresByType image/gif "access plus 1 month"  
+                ExpiresByType image/jpg "access plus 1 month"  
+                ExpiresByType image/jpeg "access plus 1 month"
+                ExpiresByType image/png "access plus 1 month"  
+                ExpiresByType image/x-icon "access plus 1 month"
+                ExpiresByType application/x-shockwave-flash "access plus 1 month" 
+        </Directory>
+        
+        CustomLog /home/walle/gitrepositories/gypcms/log/apache_access.log combined
+        ErrorLog /home/walle/gitrepositories/gypcms/log/apache_error.log
+
+<Location "/home/walle/gitrepositories/gypcms/web/">  
+ # Insert filter  
+ SetOutputFilter DEFLATE  
+   
+ # Netscape 4.x has some problems...  
+ BrowserMatch ^Mozilla/4 gzip-only-text/html  
+   
+ # Netscape 4.06-4.08 have some more problems  
+ BrowserMatch ^Mozilla/4\.0[678] no-gzip  
+   
+ # MSIE masquerades as Netscape, but it is fine  
+ # BrowserMatch \bMSIE !no-gzip !gzip-only-text/html  
+   
+ # NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48  
+ # the above regex won't work. You can use the following  
+ # workaround to get the desired effect:  
+ BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html  
+   
+ # Don't compress images  
+ SetEnvIfNoCase Request_URI \  \.(?:gif|jpe?g|png)$ no-gzip dont-vary  
+   
+ # Make sure proxies don't deliver the wrong content  
+ Header append Vary User-Agent env=!dont-vary  
+</Location> 
+
+</VirtualHost>
+
