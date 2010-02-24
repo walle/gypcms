@@ -53,6 +53,8 @@ class Router
       }
     }
 
+    //TODO: Check if it is a file in data/
+
     return $page;
   }
 
