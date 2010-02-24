@@ -14,14 +14,14 @@ namespace gypcms\page;
  */
 class Error404Page extends Page
 {
-  const NAME = '404.html';
+  const TEMPLATENAME = '404.html';
 
   /**
    * Load the template and the data
    */
   public function __construct()
   {
-    parent::__construct(Error404Page::NAME);
+    parent::__construct(Error404Page::TEMPLATENAME);
   }
 
   /**
