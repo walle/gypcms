@@ -56,8 +56,19 @@ class Site
    */
   private $settingsFile;
 
+  /**
+   *
+   * @var Site The dreaded singleton instance
+   */
+  private static $instance;
+
   public function __construct()
   {
+    if (self::$instance != null)
+    {
+      throw new \LogicException('Site is trying to be constructet twice');
+    }
+
     $this->settingsFile = Config::getConfigFile('settings.yml');
     $this->loadSettings();
 
@@ -65,6 +76,46 @@ class Site
     $this->author = $this->settings['author'];
     $this->theme = $this->settings['theme'];
     $this->logo = $this->settings['logo'];
+
+    self::$instance = $this;
+  }
+
+  /**
+   * Handle the request and show the appropriate page
+   */
+  public function dispatch()
+  {
+    $request = new \gypcms\requestHandler\Request();
+    $router = new \gypcms\routing\Router();
+
+    $page = $router->getPage($request);
+
+    $page->render();
+  }
+
+  /**
+   * Loads the templatedir and returns the environment
+   *
+   * @return \Twig_Environment
+   */
+  public function getTwigEnvironment()
+  {
+    $loader = new \Twig_Loader_Filesystem(dirname(__FILE__).'/../templates/'.$this->theme.'/');
+
+    $environment = new \Twig_Environment($loader, array(
+    //  'cache' => dirname(__FILE__).'/../cache/twigCache/',
+    ));
+
+    return $environment;
+  }
+
+  /**
+   *
+   * @return array The settings array
+   */
+  public function getSettings()
+  {
+    return $this->settings;
   }
 
   /**
@@ -82,5 +133,14 @@ class Site
     }
 
     $this->settings = $settings['settings'];
+  }
+
+  /**
+   *
+   * @return Site The instance
+   */
+  public static function getInstance()
+  {
+    return self::$instance;
   }
 }
