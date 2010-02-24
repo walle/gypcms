@@ -36,14 +36,59 @@ class Router
 
   public function getPage(\gypcms\requestHandler\Request $request)
   {
-    return new \gypcms\page\Error404Page();
+    $page = new \gypcms\page\Error404Page();
+
+    foreach ($this->routes as $route)
+    {
+      if ($route->getUrl() == $request->getUrl())
+      {
+        if (class_exists($route->getPageClassName()))
+        {
+          $class = $route->getPageClassName();
+          $class .= '($request, $route)';
+          //$page = new $class;
+          //TODO: Implement dynamic classloading
+          $page = new \gypcms\page\IndexPage($request, $route);
+        }
+      }
+    }
+
+    return $page;
   }
 
   /**
    * Loads all the configured routes from the config
+   * @throws \LogicException If not required elements is present
    */
   private function loadRoutes()
   {
-    $this->routes = \sfYaml::load($this->routesFile);
+    $routes = \sfYaml::load($this->routesFile);
+    foreach ($routes as $id => $route)
+    {
+      if (strlen($route['url']) == 0)
+      {
+        throw new \LogicException('A route must have a url. Route: '.$id.'');
+      }
+
+      if (strlen($route['page']) == 0)
+      {
+        throw new \LogicException('A route must have a page. Route: '.$id.'');
+      }
+
+      //TODO: null is not valid?
+      $sort = new Sort('', Sort::ASC);
+      if(count(@$route['sort']) > 0)
+      {
+        $sort = new Sort(@$route['sort']['data'], @$route['sort']['type']);
+      }
+
+      $limit = new Limit(0, Limit::PAGE);
+      if(count(@$route['limit']) > 0)
+      {
+        $limit = new Limit(@$route['limit']['num'], @$route['limit']['type']);
+      }
+
+      $this->routes[$id] = new Route($route['url'], $route['page'], $sort, $limit, @$route['data']);
+    }
   }
 }
