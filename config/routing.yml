@@ -19,9 +19,21 @@ all:
     type: desc
   data: ~
 
-# Defines a paginated list of the ten latest posts
+# Defines a non-paginated list of the ten latest posts
 paged:
   url: /latest
+  page: list
+  sort:
+    data: publish
+    type: desc
+  limit:
+    num: 10
+    type: ~
+  data: ~
+
+# Defines a paginated list of the ten latest posts
+paged:
+  url: /archive
   page: list
   sort:
     data: publish
