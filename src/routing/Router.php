@@ -15,6 +15,8 @@ namespace gypcms\routing;
  */
 class Router
 {
+  const FILENAME = 'routing.yml';
+
   /**
    * @var array An array with the configured routes
    */
@@ -26,12 +28,20 @@ class Router
    */
   private $routesFile;
 
-  public function __constructor()
+  public function __construct()
   {
-    $this->routesFile = Config::getConfigFile('routes.yml');
+    $this->routesFile = \gypcms\Config::getConfigFile(Router::FILENAME);
     $this->loadRoutes();
   }
 
+  public function getPage(\gypcms\requestHandler\Request $request)
+  {
+    return new \gypcms\page\Error404Page();
+  }
+
+  /**
+   * Loads all the configured routes from the config
+   */
   private function loadRoutes()
   {
     $this->routes = \sfYaml::load($this->routesFile);

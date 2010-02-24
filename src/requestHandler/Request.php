@@ -15,5 +15,29 @@ namespace gypcms\requestHandler;
  */
 class Request
 {
-  
+  /**
+   *
+   * @var The "internal" url
+   */
+  protected $url;
+
+  public function  __construct()
+  {
+    $url = @$_GET['url'];
+    if (strlen($url) == 0)
+    {
+      $url = '/';
+    }
+
+    $this->url = $url;
+  }
+
+  /**
+   *
+   * @return string The url
+   */
+  public function getUrl()
+  {
+    return $this->url;
+  }
 }
