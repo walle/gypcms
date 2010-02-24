@@ -12,7 +12,7 @@ namespace gypcms\page;
  * @author Fredrik Wallgren <fredrik@wallgren.me>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-class Error404Page extends page\Page
+class Error404Page extends Page
 {
   const NAME = '404.html';
 
@@ -25,15 +25,15 @@ class Error404Page extends page\Page
   }
 
   /**
-   * The 404 page has no data
+   * 
    */
   public function loadData()
   {
-
+    $this->data = array('title' => '404');
   }
 
   /**
-   * The 404 page has no settings
+   * The 404 page has no own settings
    */
   public function loadSettings()
   {

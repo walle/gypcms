@@ -50,7 +50,7 @@ abstract class Page
   {
     $this->templateName = $templateName;
 
-    $twig = \gypcms\Site::getTwigEnvironment();
+    $twig = \gypcms\Site::getInstance()->getTwigEnvironment();
 
     $this->template = $twig->loadTemplate($this->templateName);
 
@@ -76,6 +76,7 @@ abstract class Page
    */
   public function render()
   {
-    $this->template->display($this->data);
+    $allData = array_merge($this->data, $this->settings, \gypcms\Site::getInstance()->getSettings());
+    $this->template->display($allData);
   }
 }
