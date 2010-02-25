@@ -25,7 +25,7 @@ class ArticlePage extends Page
   public function  __construct(\gypcms\requestHandler\Request $request, \gypcms\routing\Route $route, $file)
   {
     $this->file = $file;
-    parent::__construct(IndexPage::TEMPLATENAME);
+    parent::__construct(ArticlePage::TEMPLATENAME);
   }
 
   public function loadData()
