@@ -53,7 +53,18 @@ class Router
       }
     }
 
-    //TODO: Check if it is a file in data/
+    //TODO: Make this much nicer
+    
+    $baseurl = \gypcms\Site::getInstance()->getBasedir();
+
+    $file = $baseurl.'data/'.$request->getUrl();
+
+    $file = str_replace('.html', '.yml', $file);
+
+    if (file_exists($file))
+    {
+      $page = new \gypcms\page\ArticlePage($request, $route, $file);
+    }
 
     return $page;
   }

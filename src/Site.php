@@ -119,6 +119,16 @@ class Site
   }
 
   /**
+   * TODO: Make this configurable
+   *
+   * @return string Returns the basedir of the lib
+   */
+  public function getBasedir()
+  {
+    return dirname(__FILE__).'/../';
+  }
+
+  /**
    * Loads the settings file
    *
    * @throws \LogicException If the settingsfile does not contain a settings block

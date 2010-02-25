@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Europe/Stockholm'); // TODO: Remove this
 /**
  * @package gypcms
  */
