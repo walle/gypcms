@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  search
+  <h1>Search results</h1>
+  {% if hits.empty %}
+    <p>Sorry, no hits.</p>
+  {% endif %}
+  {% for hit in hits %}
+    <div class="hit">
+      <h3><a href="{{ hit.url }}">{{ hit.name }}</a></h3>
+      <p>{{ hit.desc }}</p>
+    </div>
+  {% endfor %}
 {% endblock %}

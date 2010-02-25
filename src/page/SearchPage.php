@@ -13,10 +13,23 @@ namespace gypcms\page;
  * @author Fredrik Wallgren <fredrik@wallgren.me>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-class SearchPage implements \gypcms\page\Page
+class SearchPage extends Page
 {
-  public function render()
+  const TEMPLATENAME = 'search.html';
+
+  public function  __construct(\gypcms\requestHandler\Request $request, \gypcms\routing\Route $route)
   {
-    
+    parent::__construct(SearchPage::TEMPLATENAME);
+  }
+
+  public function loadData()
+  {
+    $data = array('hits' => array());
+    $this->data = $data;
+  }
+
+  public function loadSettings()
+  {
+
   }
 }
