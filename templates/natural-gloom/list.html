@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  list
+  {%for article in articles %}
+    <div class="post">
+       <h3>{{ article.title }}</h3>
+        <p class="preamble">
+          {{ article.preamble }}
+        </p>
+    </div>
+  {% endfor %}
 {% endblock %}
