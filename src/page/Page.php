@@ -76,7 +76,8 @@ abstract class Page
    */
   public function render()
   {
-    $allData = array_merge($this->data, $this->settings, \gypcms\Site::getInstance()->getSettings());
+    $nav = new \gypcms\template\Navigation();
+    $allData = array_merge($this->data, $this->settings, \gypcms\Site::getInstance()->getSettings(), $nav->getItems());
     $this->template->display($allData);
   }
 }

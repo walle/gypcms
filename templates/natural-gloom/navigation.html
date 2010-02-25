@@ -1,7 +1,7 @@
 <ul class="tabbed">
-  <li class="current_page_item"><a href="index.html">Home</a></li>
-  <li><a href="blog_post.html">Blog Post</a></li>
-  <li><a href="style_demo.html">Style Demo</a></li>
-  <li><a href="archives.html">Archives</a></li>
-  <li><a href="empty_page.html">Empty Page</a></li>
- </ul>
+  {% for item in items %}
+    <li {% if item.current %}class="current_page_item"{% endif %}>
+      <a href="{{ item.url }}">{{ item.name }}</a>
+    </li>
+  {% endfor %}
+</ul>
