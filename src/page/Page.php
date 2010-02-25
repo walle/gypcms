@@ -76,6 +76,7 @@ abstract class Page
    */
   public function render()
   {
+    // TODO: Make the allData into an object to ensure no owerwritten names in the template
     $nav = new \gypcms\template\Navigation();
     $allData = array_merge($this->data, $this->settings, \gypcms\Site::getInstance()->getSettings(), $nav->getItems());
     $this->template->display($allData);
