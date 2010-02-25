@@ -28,6 +28,10 @@ class Request
     {
       $url = '/';
     }
+    else if ($url[0] != '/')
+    {
+      $url = '/'.$url;
+    }
 
     $this->url = $url;
   }
