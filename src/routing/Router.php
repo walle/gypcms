@@ -48,7 +48,7 @@ class Router
           $class .= '($request, $route)';
           //$page = new $class;
           //TODO: Implement dynamic classloading
-          $page = new \gypcms\page\IndexPage($request, $route);
+          return new \gypcms\page\IndexPage($request, $route);
         }
       }
     }
@@ -63,7 +63,14 @@ class Router
 
     if (file_exists($file))
     {
-      $page = new \gypcms\page\ArticlePage($request, $route, $file);
+      if (is_dir($file))
+      {
+        $page = new \gypcms\page\ListPage($request, $route, $file);
+      }
+      else if (is_file($file))
+      {
+        $page = new \gypcms\page\ArticlePage($request, $route, $file);
+      }
     }
 
     return $page;

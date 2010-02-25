@@ -23,7 +23,13 @@ class IndexPage extends \gypcms\page\Page
 
   public function loadData()
   {
-    
+    $baseurl = \gypcms\Site::getInstance()->getBasedir();
+
+    $file = $baseurl.'data/index.yml';
+
+    $data = \sfYaml::load($file);
+
+    $this->data = array_pop($data);
   }
 
   public function loadSettings()

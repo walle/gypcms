@@ -1,0 +1,8 @@
+firstPost:
+  publish: 2010-02-21 13:00:00
+  author: Fredrik Wallgren
+  filter: basic
+  page: index
+  title: Welcome to gypcms
+  preamble: The preamble
+  body: The body
