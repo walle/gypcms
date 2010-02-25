@@ -45,10 +45,7 @@ class Router
         if (class_exists($route->getPageClassName()))
         {
           $class = $route->getPageClassName();
-          $class .= '($request, $route)';
-          //$page = new $class;
-          //TODO: Implement dynamic classloading
-          return new \gypcms\page\IndexPage($request, $route);
+          return new $class($request, $route);
         }
       }
     }
