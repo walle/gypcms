@@ -17,6 +17,12 @@ abstract class Page
 {
   /**
    *
+   * @var \gypcms\filter\Filter
+   */
+  private $filter;
+
+  /**
+   *
    * @var string The name of the template the page uses
    */
   protected $templateName;
@@ -48,6 +54,7 @@ abstract class Page
    */
   public function __construct($templateName)
   {
+    $this->filter = null;
     $this->templateName = $templateName;
 
     $twig = \gypcms\Site::getInstance()->getTwigEnvironment();
@@ -59,6 +66,7 @@ abstract class Page
 
     $this->loadSettings();
     $this->loadData();
+    $this->filterData();
   }
 
   /**
@@ -80,5 +88,27 @@ abstract class Page
     $nav = new \gypcms\template\Navigation();
     $allData = array_merge($this->data, $this->settings, \gypcms\Site::getInstance()->getSettings(), $nav->getItems());
     $this->template->display($allData);
+  }
+
+  /**
+   * Filters the body with the selected filter
+   */
+  protected function filterData()
+  {
+    $filter = 'filter';
+    $body = 'body';
+
+    if (strlen(@$this->data[$filter]) == 0)
+    {
+      return;
+    }
+
+    $cls = '\\gypcms\filter\\'.ucfirst($this->data[$filter]).'Filter';
+    $this->filter = new $cls();
+
+    if(strlen(@$this->data[$body]) > 0)
+    {
+      $this->data[$body] = $this->filter->process($this->data[$body]);
+    }
   }
 }
