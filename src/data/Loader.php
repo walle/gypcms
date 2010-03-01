@@ -20,4 +20,18 @@ interface Loader
    * This should load the data and store it in a object or array in the class
    */
   public function load();
+
+  /**
+   * Get all the raw data as an array
+   */
+  public function getRawData();
+
+  /**
+   * Search the data for a named data and return it
+   * Should return null if not found.
+   *
+   * @param string $name
+   * @return mixed|null
+   */
+  public function find($name);
 }
