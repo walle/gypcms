@@ -41,6 +41,7 @@ class YmlLoader implements Loader
     }
 
     $this->filename = $filename;
+    $this->data = null;
   }
 
   /**
@@ -58,6 +59,11 @@ class YmlLoader implements Loader
    */
   public function getRawData()
   {
+    if ($this->data == null)
+    {
+      throw new \LogicException('Trying to get data without loading first');
+    }
+
     return $this->data;
   }
 
@@ -69,6 +75,11 @@ class YmlLoader implements Loader
    */
   public function find($name)
   {
+    if ($this->data == null)
+    {
+      throw new \LogicException('Trying to get data without loading first');
+    }
+
     if (array_key_exists($name, $this->data))
     {
       return $this->data[$name];
@@ -85,6 +96,11 @@ class YmlLoader implements Loader
    */
   public function findGlobally($name)
   {
+    if ($this->data == null)
+    {
+      throw new \LogicException('Trying to get data without loading first');
+    }
+    
     return $this->findInArray($name, $this->data);
   }
 

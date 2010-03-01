@@ -46,9 +46,9 @@ class Site
   protected $theme;
 
   /**
-   * @var array The raw array with settings values
+   * @var \gypcms\data\Loader The data loader for the settings
    */
-  protected $settings;
+  protected $loader;
 
   /**
    *
@@ -72,10 +72,10 @@ class Site
     $this->settingsFile = Config::getConfigFile('settings.yml');
     $this->loadSettings();
 
-    $this->name = $this->settings['name'];
-    $this->author = $this->settings['author'];
-    $this->theme = $this->settings['theme'];
-    $this->logo = $this->settings['logo'];
+    $this->name = $this->loader->find('name');
+    $this->author = $this->loader->find('author');
+    $this->theme = $this->loader->find('theme');
+    $this->logo = $this->loader->find('logo');
 
     self::$instance = $this;
   }
@@ -113,9 +113,9 @@ class Site
    *
    * @return array The settings array
    */
-  public function getSettings()
+  public function getSettingsArray()
   {
-    return $this->settings;
+    return $this->loader->getRawData();
   }
 
   /**
@@ -135,14 +135,30 @@ class Site
    */
   private function loadSettings()
   {
-    $settings = \sfYaml::load($this->settingsFile);
-    
-    if (array_key_exists('settings', $settings) == false)
+    $this->loader = new data\YmlLoader($this->settingsFile);
+   
+    $this->loader->load();
+
+    if ($this->loader->find('name') == null)
     {
-      throw new \LogicException('The settings file does not contain a settings block.');
+      var_dump($this->loader);
+      throw new \LogicException('The settings file does not contain a name element.');
     }
 
-    $this->settings = $settings['settings'];
+    if ($this->loader->find('language') == null)
+    {
+      throw new \LogicException('The settings file does not contain a language element.');
+    }
+
+    if ($this->loader->find('author') == null)
+    {
+      throw new \LogicException('The settings file does not contain a author element.');
+    }
+
+    if ($this->loader->find('theme') == null)
+    {
+      throw new \LogicException('The settings file does not contain a theme element.');
+    }
   }
 
   /**
