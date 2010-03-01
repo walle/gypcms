@@ -30,8 +30,12 @@ class ArticlePage extends Page
 
   public function loadData()
   {
-    $data = \sfYaml::load($this->file);
-    $this->data = array_pop($data);
+    $loader = new \gypcms\data\YmlLoader($this->file);
+    $loader->load();
+
+    // TODO: Check for missing fields that have fallback in settings eg
+
+    $this->data = $loader->getRawData();
   }
 
   public function loadSettings()
