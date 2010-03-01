@@ -76,4 +76,41 @@ class YmlLoader implements Loader
 
     return null;
   }
+
+  /**
+   * Searches the dataarray recursivly and returns the first match
+   *
+   * @param string $name
+   * @return mixed|null
+   */
+  public function findGlobally($name)
+  {
+    return $this->findInArray($name, $this->data);
+  }
+
+  /**
+   * Searches an array recursivly for a named index, returns the first match
+   * Returns null if no match
+   *
+   * @param string $name
+   * @param array $array
+   * @return mixed|null
+   */
+  private function findInArray($name, $array)
+  {
+    foreach ($array as $key => $value)
+    {
+      if ($key == $name)
+      {
+        return $value;
+      }
+
+      if (is_array($value))
+      {
+        $this->findInArray($name, $value);
+      }
+    }
+
+    return null;
+  }
 }
