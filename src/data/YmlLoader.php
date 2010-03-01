@@ -1,0 +1,79 @@
+<?php
+/**
+ * @package gypcms
+ */
+
+namespace gypcms\data;
+
+/**
+ * A yml file data loader / data source
+ * Uses the symfony yaml component
+ * @see sfYaml
+ *
+ * @package gypcms
+ * @author Fredrik Wallgren <fredrik@wallgren.me>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+class YmlLoader implements Loader
+{
+  /**
+   *
+   * @var array The loaded data
+   */
+  private $data;
+
+  /**
+   *
+   * @var string The path to the file that contains data
+   */
+  private $filename;
+
+  /**
+   *
+   * @param string $filename The filename to load
+   * @throws \InvalidArgumentException If the filename isn't a file
+   */
+  public function __construct($filename)
+  {
+    if (is_file($filename) == false)
+    {
+      throw new \InvalidArgumentException('The filename must be a file');
+    }
+
+    $this->filename = $filename;
+  }
+
+  /**
+   * The loading function loads data from the file to the class
+   */
+  public function Load()
+  {
+    $data = \sfYaml::load($this->filename);
+    $this->data = array_pop($data);
+  }
+
+  /**
+   *
+   * @return array The raw data
+   */
+  public function getRawData()
+  {
+    return $this->data;
+  }
+
+  /**
+   * Returns the data if it exists, null otherwise
+   *
+   * @param string $name
+   * @return mixed|null
+   */
+  public function find($name)
+  {
+    if (array_key_exists($name, $this->data))
+    {
+      return $this->data[$name];
+    }
+
+    return null;
+  }
+}
