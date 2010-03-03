@@ -27,13 +27,17 @@ class IndexPage extends \gypcms\page\Page
 
     $file = $baseurl.'data/index.yml';
 
-    $data = \sfYaml::load($file);
+    $loader = new \gypcms\data\YmlLoader($file);
+    $loader->load();
 
-    $this->data = array_pop($data);
+    // TODO: Check for missing fields that have fallback in settings eg
+
+    $this->post = new \gypcms\post\Article();
+    $this->post->load($loader);
   }
 
   public function loadSettings()
   {
-
+    $this->settings = array();
   }
 }
