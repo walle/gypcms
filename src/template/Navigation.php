@@ -40,7 +40,7 @@ class Navigation
     {
       if (is_dir($dataDir.$file) && $file != '.' && $file != '..')
       {
-        $this->items['items'][] = array('name' => $file, 'url' => $file, 'current' => false);
+        $this->items['items'][] = array('name' => $file, 'url' => '/'.$file.'/', 'current' => false);
       }
     }
   }
