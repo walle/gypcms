@@ -1,4 +1,5 @@
 about:
   title: About gypcms
+  preamble: Gypcms is ...
   body: |
     About page for <a href="http://github.com/walle/gypcms">gypcms</a>.
