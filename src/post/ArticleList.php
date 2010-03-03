@@ -16,7 +16,7 @@ class ArticleList implements Post
 {
   /**
    *
-   * @var array An array of article objects
+   * @var array An array of ListArticle objects
    */
   protected $articles;
 
@@ -60,7 +60,7 @@ class ArticleList implements Post
       {
         $l = new \gypcms\data\YmlLoader($this->dir.'/'.$file);
         $l->Load();
-        $a = new Article();
+        $a = new ListArticle($file);
         $a->load($l);
         $this->articles[] = $a;
       }
