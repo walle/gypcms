@@ -12,7 +12,7 @@ namespace gypcms\post;
  * @author Fredrik Wallgren <fredrik@wallgren.me>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-class Article
+class Article implements Post
 {
   /**
    *
@@ -44,5 +44,36 @@ class Article
    * @var string The text of the article
    */
   protected $body;
+  
+  /**
+   * Loads all data to the object
+   *
+   * @param Loader $loader The loader
+   */
+  public function load(\gypcms\data\Loader $loader)
+  {
+    $this->author = $loader->find('author');
+    $this->body = $loader->find('body');
+    $this->preamble = $loader->find('preamble');
+    $this->publish = $loader->find('publish');
+    $this->title = $loader->find('title');
+  }
 
+  /**
+   * Returns the data in the object as an array
+   *
+   * @return array An array with the data in the object
+   */
+  public function toArray()
+  {
+    $arr = array(
+      'author' => $this->author,
+      'body' => $this->body,
+      'preamble' => $this->preamble,
+      'publish' => $this->publish,
+      'title' => $this->title
+    );
+
+    return $arr;
+  }
 }
