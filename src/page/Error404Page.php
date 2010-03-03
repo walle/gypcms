@@ -29,7 +29,7 @@ class Error404Page extends Page
    */
   public function loadData()
   {
-    $this->data = array('title' => '404');
+    $this->post = new \gypcms\post\Error('404');
   }
 
   /**
@@ -37,6 +37,6 @@ class Error404Page extends Page
    */
   public function loadSettings()
   {
-
+    $this->settings = array();
   }
 }

@@ -6,7 +6,7 @@
 namespace gypcms\post;
 
 /**
- * Represents a post loaded from a yaml file
+ * Represents an article
  *
  * @package gypcms
  * @author Fredrik Wallgren <fredrik@wallgren.me>

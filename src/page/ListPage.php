@@ -31,21 +31,12 @@ class ListPage extends Page
 
   public function loadData()
   {
-    $files = scandir($this->dir);
-    foreach ($files as $file)
-    {
-      if ($file != '.' && $file != '..')
-      {
-        $data = \sfYaml::load($this->dir.'/'.$file);
-        $this->data['articles'][] = array_pop($data);
-      }
-    }
-
-    $this->data['title'] = basename($this->dir);
+    $this->post = new \gypcms\post\ArticleList($this->dir);
+    $this->post->load(null);
   }
 
   public function loadSettings()
   {
-
+    $this->settings = array();
   }
 }
