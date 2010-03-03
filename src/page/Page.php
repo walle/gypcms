@@ -41,9 +41,9 @@ abstract class Page
 
   /**
    *
-   * @var array An array containing the data for the template
+   * @var \gypcms\post\Post An object that implements the Post interface
    */
-  protected $data;
+  protected $post;
 
   /**
    *
@@ -54,15 +54,11 @@ abstract class Page
    */
   public function __construct($templateName)
   {
-    $this->filter = null;
     $this->templateName = $templateName;
 
     $twig = \gypcms\Site::getInstance()->getTwigEnvironment();
 
     $this->template = $twig->loadTemplate($this->templateName);
-
-    $this->data = array();
-    $this->settings = array();
 
     $this->loadSettings();
     $this->loadData();
@@ -86,7 +82,7 @@ abstract class Page
   {
     // TODO: Make the allData into an object to ensure no owerwritten names in the template
     $nav = new \gypcms\template\Navigation();
-    $allData = array_merge($this->data, $this->settings, \gypcms\Site::getInstance()->getSettingsArray(), $nav->getItems());
+    $allData = array_merge($this->post->toArray(), $this->settings, \gypcms\Site::getInstance()->getSettingsArray(), $nav->getItems());
     $this->template->display($allData);
   }
 
@@ -95,20 +91,21 @@ abstract class Page
    */
   protected function filterData()
   {
-    $filter = 'filter';
-    $body = 'body';
-
-    if (strlen(@$this->data[$filter]) == 0)
-    {
-      return;
-    }
-
-    $cls = '\\gypcms\filter\\'.ucfirst($this->data[$filter]).'Filter';
-    $this->filter = new $cls();
-
-    if(strlen(@$this->data[$body]) > 0)
-    {
-      $this->data[$body] = $this->filter->process($this->data[$body]);
-    }
+    // TODO: Refactor this so it plays nice with the new post type
+//    $filter = 'filter';
+//    $body = 'body';
+//
+//    if (strlen(@$this->post[$filter]) == 0)
+//    {
+//      return;
+//    }
+//
+//    $cls = '\\gypcms\filter\\'.ucfirst($this->post[$filter]).'Filter';
+//    $this->filter = new $cls();
+//
+//    if(strlen(@$this->post[$body]) > 0)
+//    {
+//      $this->post[$body] = $this->filter->process($this->post[$body]);
+//    }
   }
 }

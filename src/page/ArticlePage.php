@@ -25,6 +25,9 @@ class ArticlePage extends Page
   public function  __construct(\gypcms\requestHandler\Request $request, \gypcms\routing\Route $route, $file)
   {
     $this->file = $file;
+    $this->post = new \gypcms\post\Article();
+    $this->settings = array();
+    
     parent::__construct(ArticlePage::TEMPLATENAME);
   }
 
@@ -35,7 +38,7 @@ class ArticlePage extends Page
 
     // TODO: Check for missing fields that have fallback in settings eg
 
-    $this->data = $loader->getRawData();
+    $this->post->load($loader);
   }
 
   public function loadSettings()
