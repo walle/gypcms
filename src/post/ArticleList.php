@@ -56,7 +56,7 @@ class ArticleList implements Post
     $files = scandir($this->dir);
     foreach ($files as $file)
     {
-      if ($file != '.' && $file != '..')
+      if ($file != '.' && $file != '..' && is_file($this->dir.'/'.$file))
       {
         $l = new \gypcms\data\YmlLoader($this->dir.'/'.$file);
         $l->Load();
