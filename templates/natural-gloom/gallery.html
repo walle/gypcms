@@ -1,5 +1,17 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  gallery
+  <h1>{{ title }}</h1>
+  <p class="preamble">
+    {{ preamble }}
+  </p>
+  <div id="gallery">
+    {% for image in images %}
+      <div class="item">
+        <a href="{{ image.url }}" title="{{ image.title }}" rel="{{ title }}">
+          <img src="{{ image.url }}" alt="{{ image.title }}" />
+        </a>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

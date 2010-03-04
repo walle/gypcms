@@ -66,7 +66,17 @@ class Router
       }
       else if (is_file($file))
       {
-        $page = new \gypcms\page\ArticlePage($request, $route, $file);
+        // TODO: Fix up this
+        $data = \sfYaml::load($file);
+        $data = array_pop($data);
+        if ($data['page'] == 'gallery')
+        {
+          $page = new \gypcms\page\GalleryPage($request, $route, $file);
+        }
+        else
+        {
+          $page = new \gypcms\page\ArticlePage($request, $route, $file);
+        }
       }
     }
 
