@@ -50,7 +50,7 @@ class Article implements Post
    *
    * @param Loader $loader The loader
    */
-  public function load(\gypcms\data\Loader $loader)
+  public function load(\gypcms\data\Loader $loader = null)
   {
     $this->author = $loader->find('author');
     $this->body = $loader->find('body');

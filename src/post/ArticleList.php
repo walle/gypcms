@@ -46,7 +46,7 @@ class ArticleList implements Post
    *
    * @param Loader $loader The loader is not used in this function. Use null
    */
-  public function load(\gypcms\data\Loader $loader)
+  public function load(\gypcms\data\Loader $loader = null)
   {
     if ($loader != null)
     {

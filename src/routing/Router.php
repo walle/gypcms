@@ -69,7 +69,7 @@ class Router
         // TODO: Fix up this
         $data = \sfYaml::load($file);
         $data = array_pop($data);
-        if ($data['page'] == 'gallery')
+        if (@$data['page'] == 'gallery')
         {
           $page = new \gypcms\page\GalleryPage($request, $route, $file);
         }

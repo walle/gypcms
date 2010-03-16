@@ -29,7 +29,7 @@ class Error implements Post
     $this->title = $title;
   }
 
-  public function load(\gypcms\data\Loader $loader)
+  public function load(\gypcms\data\Loader $loader = null)
   {
     if ($loader != null)
     {

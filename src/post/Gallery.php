@@ -56,7 +56,7 @@ class Gallery implements Post
    *
    * @param Loader $loader The loader with the data
    */
-  public function load(\gypcms\data\Loader $loader)
+  public function load(\gypcms\data\Loader $loader = null)
   {
     $this->author = $loader->find('author');
     $this->folder = $loader->find('folder');

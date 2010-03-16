@@ -19,7 +19,7 @@ interface Post
    *
    * @param Loader $loader A object that implements the loader interface
    */
-  public function load(\gypcms\data\Loader $loader);
+  public function load(\gypcms\data\Loader $loader = null);
 
   /**
    * Returns an array with all the mebers and data
