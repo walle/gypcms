@@ -115,7 +115,17 @@ class Site
    */
   public function getSettingsArray()
   {
-    return $this->loader->getRawData();
+    // TODO: Find a place for this and make it configurable
+    $cj = array(
+      'css' => '<link rel="stylesheet" type="text/css" href="/js/lib/fancybox/jquery.fancybox-1.3.1.css" media="screen" />',
+      'javascripts' => '<script type="text/javascript" src="/js/lib/jquery/jquery-1.4.2.min.js"></script>
+                        <script type="text/javascript" src="/js/lib/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+                        <script type="text/javascript" src="/js/lib/jquery.easing/jquery.easing-1.3.js"></script>
+                        <script type="text/javascript" src="/js/lib/jquery.mousewheel/jquery.mousewheel.min.js"></script>
+                        <script type="text/javascript" src="/js/application.js"></script>'
+    );
+
+    return array_merge($cj, $this->loader->getRawData());
   }
 
   /**
@@ -141,7 +151,6 @@ class Site
 
     if ($this->loader->find('name') == null)
     {
-      var_dump($this->loader);
       throw new \LogicException('The settings file does not contain a name element.');
     }
 

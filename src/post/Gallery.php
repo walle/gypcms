@@ -95,7 +95,8 @@ class Gallery implements Post
       'folder' => $this->folder,
       'preamble' => $this->preamble,
       'publish' => $this->publish,
-      'title' => $this->title
+      'title' => $this->title,
+      'viewerclass' => 'fancybox' // TODO: Make this configurable
     );
 
     $arr['images'] = $this->images;

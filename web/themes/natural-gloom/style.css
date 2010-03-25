@@ -617,3 +617,18 @@ div.comment_list {
 .norpadding {padding-right: 0;}
 .nobpadding {padding-bottom: 0;}
 .nolpadding {padding-left: 0;}
+
+/* Gallery */
+
+#gallery .item
+{
+  float: left;
+}
+
+.gallery_image
+{
+  width: 255px;
+  padding: 8px;
+  margin: 12px;
+  border: 1px solid #c4c4c4;
+}

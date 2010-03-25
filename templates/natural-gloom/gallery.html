@@ -8,8 +8,8 @@
   <div id="gallery">
     {% for image in images %}
       <div class="item">
-        <a href="{{ image.url }}" title="{{ image.title }}" rel="{{ title }}">
-          <img src="{{ image.url }}" alt="{{ image.title }}" />
+        <a class="{{ viewerclass }}" href="{{ image.url }}" title="{{ image.title }}" rel="{{ title }}">
+          <img class="gallery_image" src="{{ image.url }}" alt="{{ image.title }}" />
         </a>
       </div>
     {% endfor %}
