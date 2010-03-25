@@ -452,6 +452,11 @@ div.comment_list {
 }
 #header {padding: 48px 48px 0 48px;}
 
+#site_title img {
+  float: left;
+  margin: 12px;
+}
+
 #site_title h1 {
 	color: #A0C3D0;
 	font-size: 2.5em;
