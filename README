@@ -1,0 +1,6 @@
+Gypcms: A PHP cms that uses git, yaml and php as main components
+============================================
+
+Gypcms aims at using existing tools to simplify the cms.
+
+Gypcms is licensed under the MIT license (see LICENSE file).

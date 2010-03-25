@@ -1,0 +1,44 @@
+COPYRIGHTS
+==========
+
+gypcms
+
+Url:       http://www.github.com/walle/gypcms
+Copyright: Fredrik Wallgren
+License:   MIT - see LICENSE file
+
+Yaml
+------------------
+
+symfony contains the yaml component from symfony components
+
+Url:       http://components.symfony-project.org/yaml/
+Copyright: Copyright (c) 2008-2009 Fabien Potencier
+License:   MIT - see licenses/LICENSE.yaml file
+
+Arcsin
+----
+
+symfony uses templates from arcsin as standard themes
+
+Url:       http://templates.arcsin.se
+Copyright: Copyright (c) 2009 Viktor Persson
+License:   Creative Commons Attribution 2.5 License - see licenses/LICENSE.arcsin file
+
+Twig
+----
+
+symfony uses the twig templating engine
+
+Url:       http://www.twig-project.org/
+Copyright: Copyright (c) 2009 by the Twig Team, see lib/twig/AUTHORS for more details.
+License:   New BSD - see licenses/LICENSE.twig file
+
+Zend Lucene Search
+------------------------------------
+
+gypcms contains the search component from the zend framework
+
+Url:       http://framework.zend.com
+Copyright: Copyright (c) 2005-2010, Zend Technologies USA, Inc.
+License:   New BSD - see licenses/LICENSE.zend_lucene_search file
