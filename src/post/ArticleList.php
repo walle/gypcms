@@ -60,7 +60,7 @@ class ArticleList implements Post
       {
         $l = new \gypcms\data\YmlLoader($this->dir.'/'.$file);
         $l->Load();
-        $a = new ListArticle($file);
+        $a = new ListArticle(str_replace('.yml', '.html', $file));
         $a->load($l);
         $this->articles[] = $a;
       }
