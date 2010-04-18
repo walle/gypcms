@@ -37,6 +37,7 @@ interface Loader
 
   /**
    * Adds data to the loaded data on demand
+   * Should give error if the data is already there
    *
    * @param string $key The key where to add
    * @param string $data The data to add

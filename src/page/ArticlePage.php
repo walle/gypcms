@@ -34,7 +34,11 @@ class ArticlePage extends Page
     $loader = new \gypcms\data\YmlLoader($this->file);
     $loader->load();
 
-    // TODO: Check for missing fields that have fallback in settings eg
+    if ($loader->find('author') == null)
+    {
+      $author = \gypcms\Site::getInstance()->findSetting('author');
+      $loader->add('author', $author);
+    }
 
     $this->post = new \gypcms\post\Article();
     $this->post->load($loader);

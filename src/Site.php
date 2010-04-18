@@ -119,7 +119,19 @@ class Site
   }
 
   /**
-   * TODO: Make this configurable
+   * Searches for the setting by $settingName.
+   * Returns null if it does not exist
+   *
+   * @param string $settingName
+   * @return string|null
+   */
+  public function findSetting($settingName)
+  {
+    return $this->loader->find($settingName);
+  }
+
+  /**
+   * TODO: Make this configurable?
    *
    * @return string Returns the basedir of the lib
    */
