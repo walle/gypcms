@@ -1,7 +1,7 @@
 icons:
   publish: 2010-03-04 13:00:00
   author: Fredrik Wallgren
-  filter: HttpLinks
+  filter: Text
   page: gallery
   title: Sample gallery
   preamble: | 
