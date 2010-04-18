@@ -91,21 +91,6 @@ abstract class Page
    */
   protected function filterData()
   {
-    // TODO: Refactor this so it plays nice with the new post type
-//    $filter = 'filter';
-//    $body = 'body';
-//
-//    if (strlen(@$this->post[$filter]) == 0)
-//    {
-//      return;
-//    }
-//
-//    $cls = '\\gypcms\filter\\'.ucfirst($this->post[$filter]).'Filter';
-//    $this->filter = new $cls();
-//
-//    if(strlen(@$this->post[$body]) > 0)
-//    {
-//      $this->post[$body] = $this->filter->process($this->post[$body]);
-//    }
+    $this->post->filter();
   }
 }

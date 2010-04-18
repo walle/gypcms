@@ -45,4 +45,21 @@ class Error implements Post
 
     return $arr;
   }
+
+  /**
+   *
+   * @return string Returns the filter to use
+   */
+  public function getFilter()
+  {
+    return $this->filter;
+  }
+
+  /**
+   * Filter the data
+   */
+  public function filter()
+  {
+    
+  }
 }

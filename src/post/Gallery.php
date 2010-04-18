@@ -52,6 +52,12 @@ class Gallery implements Post
   protected $images;
 
   /**
+   *
+   * @var string The filter to use
+   */
+  protected $filter;
+
+  /**
    * Loads all data into the object
    *
    * @param Loader $loader The loader with the data
@@ -63,6 +69,12 @@ class Gallery implements Post
     $this->preamble = $loader->find('preamble');
     $this->publish = $loader->find('publish');
     $this->title = $loader->find('title');
+
+    $this->filter = 'BasicFilter';
+    if ($loader->find('filter'))
+    {
+      $this->filter = $loader->find('filter');
+    }
 
     $this->images = array();
     
@@ -105,5 +117,28 @@ class Gallery implements Post
     $arr['images'] = $this->images;
 
     return $arr;
+  }
+
+  /**
+   *
+   * @return string Returns the filter to use
+   */
+  public function getFilter()
+  {
+    return $this->filter;
+  }
+
+  /**
+   * Filter the data
+   */
+  public function filter()
+  {
+    $cls = '\\gypcms\filter\\'.ucfirst($this->filter).'Filter';
+    $filter = new $cls();
+
+    if(strlen($this->preamble) > 0)
+    {
+      $this->preamble = $filter->process($this->preamble);
+    }
   }
 }

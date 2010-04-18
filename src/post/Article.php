@@ -44,6 +44,12 @@ class Article implements Post
    * @var string The text of the article
    */
   protected $body;
+
+  /**
+   *
+   * @var string The filter to use
+   */
+  protected $filter;
   
   /**
    * Loads all data to the object
@@ -57,6 +63,12 @@ class Article implements Post
     $this->preamble = $loader->find('preamble');
     $this->publish = $loader->find('publish');
     $this->title = $loader->find('title');
+    
+    $this->filter = 'BasicFilter';
+    if ($loader->find('filter'))
+    {
+      $this->filter = $loader->find('filter');
+    }
   }
 
   /**
@@ -75,5 +87,29 @@ class Article implements Post
     );
 
     return $arr;
+  }
+
+  /**
+   *
+   * @return string Returns the filter to use
+   */
+  public function getFilter()
+  {
+    return $this->filter;
+  }
+
+  /**
+   * Filter the data
+   */
+  public function filter()
+  {
+    $cls = '\\gypcms\filter\\'.ucfirst($this->filter).'Filter';
+    $filter = new $cls();
+
+    if(strlen($this->body) > 0)
+    {
+      $this->preamble = $filter->process($this->preamble);
+      $this->body = $filter->process($this->body);
+    }
   }
 }

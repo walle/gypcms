@@ -27,4 +27,16 @@ interface Post
    * @return array An array of the object with key value pairs from the members
    */
   public function toArray();
+
+  /**
+   * Returns the filter to use, loaded from the post data
+   *
+   * @return string The filter to use, defaults to BasicFilter
+   */
+  public function getFilter();
+
+  /**
+   * Do the filtering of the post
+   */
+  public function filter();
 }
