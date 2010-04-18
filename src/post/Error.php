@@ -52,7 +52,7 @@ class Error implements Post
    */
   public function getFilter()
   {
-    return $this->filter;
+    return 'BasicFilter';
   }
 
   /**
