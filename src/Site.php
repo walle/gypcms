@@ -115,17 +115,7 @@ class Site
    */
   public function getSettingsArray()
   {
-    // TODO: Find a place for this and make it configurable
-    $cj = array(
-      'css' => '<link rel="stylesheet" type="text/css" href="/js/lib/fancybox/jquery.fancybox-1.3.1.css" media="screen" />',
-      'javascripts' => '<script type="text/javascript" src="/js/lib/jquery/jquery-1.4.2.min.js"></script>
-                        <script type="text/javascript" src="/js/lib/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
-                        <script type="text/javascript" src="/js/lib/jquery.easing/jquery.easing-1.3.js"></script>
-                        <script type="text/javascript" src="/js/lib/jquery.mousewheel/jquery.mousewheel.min.js"></script>
-                        <script type="text/javascript" src="/js/application.js"></script>'
-    );
-
-    return array_merge($cj, $this->loader->getRawData());
+    return $this->loader->getRawData();
   }
 
   /**
@@ -168,6 +158,44 @@ class Site
     {
       throw new \LogicException('The settings file does not contain a theme element.');
     }
+
+    $this->loadCssFromSettings();
+
+    $this->loadJavascriptsFromSettings();
+  }
+
+  private function loadCssFromSettings()
+  {
+    $css = '';
+
+    $cssFiles = $this->loader->find('cssFiles');
+    foreach ($cssFiles as $file)
+    {
+      if (strlen($file['url']) > 0)
+      {
+        $css .= '<link rel="stylesheet" type="text/css" href="'.$file['url'].'" media="'.($file['media'] ? $file['media'] : 'screen').'" />';
+      }
+    }
+
+    $this->loader->add('css', $css);
+  }
+
+  private function loadJavascriptsFromSettings()
+  {
+    $js = '';
+
+    $jsFiles = $this->loader->find('javascriptFiles');
+    foreach ($jsFiles as $url)
+    {
+      if (strlen($url) > 0)
+      {
+        $js .= '<script type="text/javascript" src="'.$url.'"></script>';
+      }
+    }
+
+    $js .= '<script type="text/javascript" src="/js/application.js"></script>';
+
+    $this->loader->add('javascripts', $js);
   }
 
   /**

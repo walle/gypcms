@@ -105,6 +105,23 @@ class YmlLoader implements Loader
   }
 
   /**
+   * Adds $data to $key
+   *
+   * @param string $key
+   * @param string $data
+   * @throws \Exception If the key is in use
+   */
+  public function add($key, $data)
+  {
+    if (isset ($this->data[$key]))
+    {
+      throw new \Exception('The index ('.$key.') is already in use');
+    }
+
+    $this->data[$key] = $data;
+  }
+
+  /**
    * Searches an array recursivly for a named index, returns the first match
    * Returns null if no match
    *

@@ -34,4 +34,12 @@ interface Loader
    * @return mixed|null
    */
   public function find($name);
+
+  /**
+   * Adds data to the loaded data on demand
+   *
+   * @param string $key The key where to add
+   * @param string $data The data to add
+   */
+  public function add($key, $data);
 }
