@@ -52,7 +52,7 @@ class Navigation
     {
       if (is_dir($dataDir.$file) && $file != '.' && $file != '..')
       {
-        $this->items['items'][] = array('name' => $file, 'url' => '/'.$file.'/', 'current' => ($currentFolder == $file));
+        $this->items['items'][] = array('name' => ucfirst($file), 'url' => '/'.$file.'/', 'current' => ($currentFolder == $file));
       }
     }
   }
