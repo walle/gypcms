@@ -2,4 +2,5 @@ TODO gypcms
 
 * Add the search function
 * Add filters
-* Add Textile
+* Fix the rss page
+* Fix the list routes
