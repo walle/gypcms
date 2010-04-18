@@ -19,6 +19,7 @@ class SearchPage extends Page
 
   public function  __construct(\gypcms\requestHandler\Request $request, \gypcms\routing\Route $route)
   {
+    $this->post = new \gypcms\post\Search();
     parent::__construct(SearchPage::TEMPLATENAME);
   }
 
@@ -30,6 +31,6 @@ class SearchPage extends Page
 
   public function loadSettings()
   {
-
+    $this->settings = array();
   }
 }

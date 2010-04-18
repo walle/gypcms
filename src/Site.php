@@ -111,7 +111,7 @@ class Site
     $loader = new \Twig_Loader_Filesystem(dirname(__FILE__).'/../templates/'.$this->theme.'/');
 
     $environment = new \Twig_Environment($loader, array(
-    //  'cache' => dirname(__FILE__).'/../cache/twigCache/',
+      'cache' => dirname(__FILE__).'/../cache/twigCache/',
     ));
 
     return $environment;
