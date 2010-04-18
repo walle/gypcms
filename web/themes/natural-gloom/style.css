@@ -632,7 +632,8 @@ div.comment_list {
 
 .gallery_image
 {
-  width: 255px;
+  width: 280px;
+  height: 200px;
   padding: 8px;
   margin: 12px;
   border: 1px solid #c4c4c4;

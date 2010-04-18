@@ -1,0 +1,9 @@
+icons:
+  publish: 2010-03-04 13:00:00
+  author: Fredrik Wallgren
+  page: gallery
+  title: Sample gallery
+  preamble: | 
+              This is a sample gallery with images from http://creativecommons.org/.
+              All images are licensed under the creative commons license.
+  folder: cc
