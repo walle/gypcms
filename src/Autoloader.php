@@ -26,6 +26,7 @@ class Autoloader
   {
     $this->loadYaml();
     $this->loadTwig();
+    $this->loadTextile();
     $this->loadSrc();
 
     spl_autoload_register(array($this, 'loadClass'));
@@ -87,5 +88,10 @@ class Autoloader
   {
     require_once dirname(__FILE__).'/../lib/twig/lib/Twig/Autoloader.php';
     \Twig_Autoloader::register();
+  }
+
+  private function loadTextile()
+  {
+    require_once dirname(__FILE__).'/../lib/textile/Textile.php';
   }
 }

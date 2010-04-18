@@ -1,8 +1,28 @@
 firstPost:
   publish: 2010-02-21 13:00:00
   author: Fredrik Wallgren
-  filter: basic
+  filter: textile
   page: index
   title: Welcome to gypcms
   preamble: The preamble
-  body: The body
+  body: |
+        h3. Subject
+
+        This is *a* __test__ page.
+
+        * List item 1
+        * and 2
+        * and 3
+
+        \# test
+        \# test 2
+        \# test 3
+        \# etse 4
+        \# test 5
+        \# 6 *woho*
+
+        foo(c)
+
+        bc. Test
+
+        woho! Textile!
