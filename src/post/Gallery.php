@@ -90,13 +90,16 @@ class Gallery implements Post
    */
   public function toArray()
   {
+    $c = \gypcms\Site::getInstance()->findSetting('viewerclass');
+    $viewerclass = ($c ? $c : 'fancybox');
+
     $arr = array(
       'author' => $this->author,
       'folder' => $this->folder,
       'preamble' => $this->preamble,
       'publish' => $this->publish,
       'title' => $this->title,
-      'viewerclass' => 'fancybox' // TODO: Make this configurable
+      'viewerclass' => $viewerclass
     );
 
     $arr['images'] = $this->images;
