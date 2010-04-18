@@ -96,7 +96,7 @@ class ArticleList implements Post
    */
   public function getFilter()
   {
-    return 'BasicFilter';
+    return 'basic';
   }
 
   /**

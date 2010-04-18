@@ -6,27 +6,20 @@
 namespace gypcms\post;
 
 /**
- * Represents an article
+ * Represents an search
  *
  * @package gypcms
  * @author Fredrik Wallgren <fredrik@wallgren.me>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-class Error implements Post
+class Search implements Post
 {
   /**
    *
-   * @var string The title of the page
    */
-  protected $title;
-
-  /**
-   *
-   * @param string $title The title to use
-   */
-  function __construct($title)
+  function __construct()
   {
-    $this->title = $title;
+
   }
 
   public function load(\gypcms\data\Loader $loader = null)
@@ -40,7 +33,7 @@ class Error implements Post
   public function toArray()
   {
     $arr = array(
-      'title' => $this->title
+    
     );
 
     return $arr;
@@ -60,6 +53,6 @@ class Error implements Post
    */
   public function filter()
   {
-    
+
   }
 }

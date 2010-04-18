@@ -1,5 +1,6 @@
 about:
   title: About gypcms
+  filter: Text
   preamble: Gypcms is ...
   body: |
-    About page for <a href="http://github.com/walle/gypcms">gypcms</a>.
+    About page for gypcms (http://github.com/walle/gypcms).

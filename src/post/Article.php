@@ -64,7 +64,7 @@ class Article implements Post
     $this->publish = $loader->find('publish');
     $this->title = $loader->find('title');
     
-    $this->filter = 'BasicFilter';
+    $this->filter = 'basic';
     if ($loader->find('filter'))
     {
       $this->filter = $loader->find('filter');
