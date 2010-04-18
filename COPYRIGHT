@@ -78,3 +78,11 @@ gypcms uses the fancybox library
 Url:       http://fancybox.net
 Copyright: Copyright (c) 2008 - 2010 Janis Skarnelis
 License:   MIT
+
+Textile
+
+gypcms uses the Textile library
+
+Url:       http://textile.thresholdstate.com/
+Copyright: Copyright (c) 2003-2004, Dean Allen <dean@textism.com>
+License:   BSD - see licenses/LICENSE.textile file
