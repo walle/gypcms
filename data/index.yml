@@ -6,23 +6,6 @@ firstPost:
   title: Welcome to gypcms
   preamble: The preamble
   body: |
-        h3. Subject
+        Description of gypcms goes here.
 
-        This is *a* __test__ page.
-
-        * List item 1
-        * and 2
-        * and 3
-
-        \# test
-        \# test 2
-        \# test 3
-        \# etse 4
-        \# test 5
-        \# 6 *woho*
-
-        foo(c)
-
-        bc. Test
-
-        woho! Textile!
+        Can contain *textile* markup.
