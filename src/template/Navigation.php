@@ -30,9 +30,21 @@ class Navigation
 
   protected function loadItems()
   {
-    //TODO: Load real current value
+    $url = \gypcms\Site::getInstance()->getUrl();
 
-    $this->items = array('items' => array('home' => array('name' => 'Home', 'url' => '/', 'current' => 'true')));
+    $matches = array();
+    preg_match_all('/\/(.+)\//', $url, $matches);
+
+    if (count($matches) > 1)
+    {
+      $currentFolder = array_pop($matches[1]);
+    }
+    else
+    {
+      $currentFolder = '';
+    }
+
+    $this->items = array('items' => array('home' => array('name' => 'Home', 'url' => '/', 'current' => (strlen($currentFolder) == 0))));
 
     $dataDir = \gypcms\Site::getInstance()->getBasedir().'data/';
     $files = scandir($dataDir);
@@ -40,7 +52,7 @@ class Navigation
     {
       if (is_dir($dataDir.$file) && $file != '.' && $file != '..')
       {
-        $this->items['items'][] = array('name' => $file, 'url' => '/'.$file.'/', 'current' => false);
+        $this->items['items'][] = array('name' => $file, 'url' => '/'.$file.'/', 'current' => ($currentFolder == $file));
       }
     }
   }

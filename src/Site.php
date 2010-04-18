@@ -58,16 +58,24 @@ class Site
 
   /**
    *
+   * @var string The current url requested
+   */
+  private $url;
+
+  /**
+   *
    * @var Site The dreaded singleton instance
    */
   private static $instance;
 
-  public function __construct()
+  public function __construct($url)
   {
     if (self::$instance != null)
     {
       throw new \LogicException('Site is trying to be constructet twice');
     }
+
+    $this->url = $url;
 
     $this->settingsFile = Config::getConfigFile('settings.yml');
     $this->loadSettings();
@@ -138,6 +146,15 @@ class Site
   public function getBasedir()
   {
     return dirname(__FILE__).'/../';
+  }
+
+  /**
+   *
+   * @return string The current request url
+   */
+  public function getUrl()
+  {
+    return $this->url;
   }
 
   /**

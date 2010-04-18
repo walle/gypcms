@@ -12,21 +12,8 @@ require_once dirname(__FILE__).'/../src/Autoloader.php';
 $l = new gypcms\Autoloader();
 $l->load();
 
-$site = new gypcms\Site();
+$url = '/'.@$_REQUEST['url'];
+
+$site = new gypcms\Site($url);
 
 $site->dispatch();
-
-exit;
-
-//$settingsArr = sfYaml::load(dirname(__FILE__).'/../config/settings.yml');
-//
-//$first = sfYaml::load(dirname(__FILE__).'/../data/'.str_replace('.html', '.yml', $_REQUEST['url']).'');
-//
-//$loader = new Twig_Loader_Filesystem(dirname(__FILE__).'/../templates/'.$settingsArr['settings']['theme']);
-//
-//$twig = new Twig_Environment($loader, array(
-////  'cache' => dirname(__FILE__).'/../cache/twigCache/',
-//));
-//
-//$template = $twig->loadTemplate('article.html');
-//$template->display(array_merge(array_pop($settingsArr), array_pop($first)));
