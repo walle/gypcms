@@ -9,3 +9,5 @@ firstPost:
         Description of gypcms goes here.
 
         Can contain *textile* markup.
+
+        "Textile test page":/gypcms/textile-test.html
