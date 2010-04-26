@@ -3,4 +3,8 @@ Gypcms: A PHP cms that uses git, yaml and php as main components
 
 Gypcms aims at using existing tools to simplify the cms.
 
+This is work in progress and should not be used in production.
+
+Example page exists. http://gypcms.wallgren.me/
+
 Gypcms is licensed under the MIT license (see LICENSE file).
