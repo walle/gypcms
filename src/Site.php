@@ -114,6 +114,8 @@ class Site
       'cache' => dirname(__FILE__).'/../cache/twigCache/',
     ));
 
+    $environment->addExtension(new \gypcms\twig\File());
+
     return $environment;
   }
 

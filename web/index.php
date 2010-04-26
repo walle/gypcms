@@ -9,11 +9,11 @@ ini_set("display_errors", 1);
 
 require_once dirname(__FILE__).'/../src/Autoloader.php';
 
-$l = new gypcms\Autoloader();
+$l = new \gypcms\Autoloader();
 $l->load();
 
 $url = '/'.@$_REQUEST['url'];
 
-$site = new gypcms\Site($url);
+$site = new \gypcms\Site($url);
 
 $site->dispatch();
